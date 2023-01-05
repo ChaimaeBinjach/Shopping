@@ -12,4 +12,4 @@ $query = "INSERT INTO `data`(`user`,`email`,`message`) VALUES ('$user','$email',
 
 mysqli_query($connection, $query);
 
-echo "well done :)";
+echo "well done:)";
