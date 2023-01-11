@@ -1,0 +1,170 @@
+
+
+*{
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 0.99em;
+    font-family:'Rubik', sans-serif;
+    font-weight: normal;
+    text-decoration: none;
+    outline: none; 
+    border: none;
+    margin: 0;
+    padding: 0;
+    transition: all .1s ease-out;
+
+}
+html, body{
+    font-size:120%;
+    position: static;
+    background-color: rgb(237, 232, 241);
+    min-height: 8rem;
+    color: rgb(93, 46, 141);
+    margin: 0;
+    padding-bottom: 5em;
+    
+    overflow-x: hidden;
+
+}
+*::selection{
+    background-color: rgb(197, 148, 243);
+    color: #faf5fa;
+}
+*::-webkit-scrollbar{
+    
+    height: 0.5rem; 
+    width: 1rem;
+}
+
+.visible-scrollbar,
+.invisible-scrollbar,
+.mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+}
+*::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+/* *::-webkit-scrollbar-thumb {
+    background: rgb(230, 213, 231);
+  } */
+  .message{
+    /* background-color: #faf5fa; */
+    display: flex;
+    padding:2rem;
+    position: sticky;
+    align-items: center;
+    margin: 0 auto;
+    top: 0;
+    max-width: 1200px;
+    justify-content: space-between;
+    gap: 1.3rem;
+    z-index: 10000;
+
+  }
+  .message span{
+    font-size: 1rem;
+    color: #0f0f0f;
+  }
+  .message i{
+    /* color: #cca4cc; */
+    cursor: pointer;
+    font-size: 2.5rem;
+  }
+
+  .message i:hover{
+    transform: rotate(100deg);
+  }
+
+  .form-container{
+    background-color: rgb(242, 231, 250);
+    display: flex;
+    align-items: safe center;
+    justify-content: safe center;
+    min-height: 100%;
+    
+    /* padding: 200px 200px 90px; */
+    /* here where I can give the shape of the form all */
+    padding: 2rem; 
+
+  }
+  /* my form and grey/purple color */
+  .form-container form{
+    border-radius: 0.6rem;
+    border: inherit;
+    padding: 0.9rem;
+    width: 30rem;
+    box-shadow: rgb(175, 172, 172);
+    background-color: white;
+    text-align: center;
+  }
+  /* for my heading register:) */
+  .form-container form h2{
+    color: rgb(37, 34, 39);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-size: 2rem;
+
+  }
+  /* for the informations like email.. */
+  .form-container form .txt{
+    border-radius: 0.4rem;
+    border:#cca4cc;
+    background-color: rgb(236, 234, 234);
+    /* padding: 10px 10px 10px; */
+    padding: 0.3rem 0.4rem;
+    width: 100%;
+    color: black;
+    font-size: 1.4rem;
+    margin: 0.7rem 0;
+  }
+  .white-sub,.sub{
+    background-color:rgb(207, 247, 207) ;
+    text-transform: capitalize;
+
+  }
+
+.sub, .option-sub, .delete-sub, .white-sub{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    display: block;
+    color: #0f0f0f;
+    padding: 0.3rem 0.3rem ;
+    cursor: pointer;
+    border-radius: 5rem;
+    text-transform: capitalize;
+
+}
+.sub:hover, 
+.option-sub:hover, 
+.delete-sub:hover{
+    background-color:rgb(144, 216, 144);
+    
+
+}
+.option-sub{
+    background-color: purple;
+}
+.delete-sub{
+    background-color: purple;
+}
+
+.form-container form p{
+    color: #0f0f0f;
+    padding-top: 1.2rem;
+    font-size: 1rem;
+
+}
+.form-container form p a{
+    color:blue;
+
+}
+.form-container form p a:hover{
+    text-decoration: underline;
+
+}
+
+

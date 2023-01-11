@@ -16,10 +16,10 @@
                 <img src="images/logo1.png" />
             </a>
             <ul class="menu">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <!-- <div class="f-img">
@@ -31,7 +31,7 @@
             <a class="main-btn" href="#">Contact</a>
         </div>
     </header>
-    <section class="features">
+    <section id="features" class="features">
         <div class="feature-container">
             <div class="feature-box">
                 <div class="f-img">
@@ -64,9 +64,10 @@
                     <a href="#" class="main-btn">Check</a>
                 </div>
             </div>
+
         </div>
     </section>
-    <section class="about">
+    <section id="about" class="about">
         <div class="about-img">
             <img src="images/about.png.png">
         </div>
@@ -77,7 +78,8 @@
             <button class="main-btn">Read More</button>
         </div>
     </section>
-    <footer class="contact">
+
+    <footer id="contact" class="contact">
         <div class="contact-heading">
             <h1>Contact Us</h1>
             <p>dfghikolpiudfxcvghjuytrfdghujiytfgcvhjuygfvhygf</p>
