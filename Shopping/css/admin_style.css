@@ -13,7 +13,7 @@
 
 }
 html, body{
-    font-size:120%;
+    font-size:63%;
     position: static;
     background-color: rgb(237, 232, 241);
     min-height: 8rem;
@@ -24,6 +24,7 @@ html, body{
     overflow-x: hidden;
 
 }
+
 *::selection{
     background-color: rgb(197, 148, 243);
     color: #faf5fa;
@@ -46,8 +47,106 @@ html, body{
     background-color: transparent;
 }
 
-
-
 /* *::-webkit-scrollbar-thumb {
     background: rgb(230, 213, 231);
   } */
+  section{
+    padding:3rem 2rem;
+  }
+  .message{
+    /* background-color: #faf5fa; */
+    display: flex;
+    padding:2rem;
+    position: sticky;
+    align-items: center;
+    margin: 0 auto;
+    top: 0;
+    max-width: 1200px;
+    justify-content: space-between;
+    gap: 1.3rem;
+    z-index: 10000;
+
+  }
+  .message span{
+    font-size: 1rem;
+    color: #0f0f0f;
+  }
+  .message i{
+    /* color: #cca4cc; */
+    cursor: pointer;
+    font-size: 2.5rem;
+  }
+
+  .message i:hover{
+    transform: rotate(100deg);
+  }
+  .white-sub,.sub{
+    background-color:rgb(207, 247, 207) ;
+    text-transform: capitalize;
+
+  }
+
+.sub, .option-sub, .delete-sub, .white-sub{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    display: block;
+    color: #0f0f0f;
+    padding: 0.3rem 0.3rem ;
+    cursor: pointer;
+    border-radius: 5rem;
+    text-transform: capitalize;
+
+}
+.sub:hover, 
+.option-sub:hover, 
+.delete-sub:hover{
+    background-color:rgb(144, 216, 144);
+    
+
+}
+.option-sub{
+    background-color: purple;
+}
+.delete-sub{
+    background-color: purple;
+}
+
+  .header{
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #ecb4ec;
+    box-shadow: whitesmoke;
+  }
+  .header .flex{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    position: relative;
+    margin: 0 auto;
+    max-width: 20em;/*here was 1200px*/
+
+  }
+
+  .header .flex .logo{
+    color: black;
+    font-size: 2.6rem;
+  }
+  .header .flex .logo span{
+    color: #ecb4ec;
+  }
+  .header .flex .navbar a{
+    margin:0 1rem;
+    font-size: 2rem;
+    color: #0f0f0f;
+
+  }
+  .header .flex .navbar a:hover{
+    color:#ecb4ec;
+  }
+  .header .flex .icons div{
+    
+  }

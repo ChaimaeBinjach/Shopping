@@ -52,6 +52,9 @@ html, body{
 /* *::-webkit-scrollbar-thumb {
     background: rgb(230, 213, 231);
   } */
+  section{
+    padding:3rem 2rem;
+  }
   .message{
     /* background-color: #faf5fa; */
     display: flex;

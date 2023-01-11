@@ -1,6 +1,6 @@
 <header class="header">
     <div class="flex">
-        <a href="admin_page.php">Admin <span>Panel</span></a>
+        <a href="admin_page.php" class="logo">Admin <span>Panel </span></a>
         <nav class="navbar">
             <a href="admin_page.php">Home</a>
             <a href="admin_products.php">Products</a>
