@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
     $cpass = $_POST['cpassword'];
     $user_type = $_POST['User_type'];
 
+
     if ($email != $cemail) {
         $message[] = 'Email not matched!';
     }
