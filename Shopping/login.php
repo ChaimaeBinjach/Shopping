@@ -17,7 +17,6 @@ if (isset($_POST['submit'])) {
         $message[] = 'Password must be at least 8 characters';
     }
 
-
     if (empty($message)) {
         // Prepare SQL statement
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
