@@ -148,5 +148,9 @@ html, body{
     color:#ecb4ec;
   }
   .header .flex .icons div{
-    
+    margin-left: 1rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #0f0f0f;
+
   }
