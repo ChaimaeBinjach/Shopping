@@ -17,6 +17,7 @@
 //     accoutBox.classList.tremove('active');
 // }
 
+
 const navbar = document.querySelector('.header .navbar');
 const accountBox = document.querySelector('.header .account-box');
 const menuButton = document.querySelector('#menubtn');
