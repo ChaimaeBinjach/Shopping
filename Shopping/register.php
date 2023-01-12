@@ -24,6 +24,8 @@
 
 <?php
 include 'config.php';
+// session_start();
+ob_start();
 
 
 if (isset($_POST['submit'])) {
@@ -70,6 +72,7 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+ob_end_flush();
 ?>
 
 

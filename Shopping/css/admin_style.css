@@ -15,12 +15,11 @@
 html, body{
     font-size:63%;
     position: static;
-    background-color: rgb(237, 232, 241);
-    min-height: 8rem;
-    color: rgb(93, 46, 141);
-    margin: 0;
-    padding-bottom: 5em;
-    
+    background-color: rgb(225, 212, 236);
+    /* min-height: 8rem;  */
+    /* color: rgb(93, 46, 141); */
+    /* margin: 0;
+    padding-bottom: 5em; */
     overflow-x: hidden;
 
 }
@@ -117,40 +116,71 @@ html, body{
     right: 0;
     left: 0;
     z-index: 1000;
-    background-color: #ecb4ec;
+    background-color: #c5a6c3;
     box-shadow: whitesmoke;
   }
   .header .flex{
-    justify-content: space-between;
     display: flex;
     align-items: center;
-    padding: 1.5rem;
     position: relative;
+    justify-content: space-between;
+    padding: 2.5rem;
     margin: 0 auto;
-    max-width: 20em;/*here was 1200px*/
+    max-width: 1300px;/*here was 1200px*/
 
   }
 
   .header .flex .logo{
     color: black;
-    font-size: 2.6rem;
+    font-size: 2.5rem;
   }
   .header .flex .logo span{
-    color: #ecb4ec;
+    color:rgb(33, 4, 80);
   }
   .header .flex .navbar a{
+    /* position: static; */
+    /* font-size: 4em; */
     margin:0 1rem;
-    font-size: 2rem;
-    color: #0f0f0f;
+    font-size: 1.5rem;
+    color: black;
 
   }
   .header .flex .navbar a:hover{
+    position: static;
     color:#ecb4ec;
   }
   .header .flex .icons div{
-    margin-left: 1rem;
-    font-size: 2.5rem;
-    cursor: pointer;
+    margin-left: 40rem;
+    font-size: 2rem;
+    cursor:pointer;
     color: #0f0f0f;
 
+  }
+  .header .flex .icons div:hover{
+    color: #6e166e;
+  }
+
+  .header .flex .account-b{
+    /* position: absolute;
+    top:40px;
+    right:2rem;
+    width:30rem; */
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    width: 30rem;
+    background: rgb(245, 226, 245);
+    box-shadow: #2c2c2c;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    
+  }
+  .header .flex .account-b p{
+    font-size: 2rem;
+    color:#0f0f0f;
+    margin-bottom: 0.5rem;
+  }
+  .header .flex .account-b p span{
+    color: #6e166e;
   }

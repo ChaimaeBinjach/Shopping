@@ -51,36 +51,80 @@
 //         $stmt->close();
 //     }
 // }
+
+// include 'config.php';
+// session_start();
+
+// if (isset($_POST['submit'])) {
+
+
+//     $email = mysqli_real_escape_string($conn, $_POST['email']);
+
+//         // retrieve the hashed password from the database for the provided email
+//         $query = "SELECT password FROM users WHERE email='$email'";
+//         $result = mysqli_query($conn, $query);
+//         $hashed_password = mysqli_fetch_assoc($result)['password'];
+
+//     $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+//     password_verify($pass ,);
+
+//     $select_users = mysqli_query($conn, "SELECT * FROM users WHERE email ='$email' AND password='$pass'") or die('query failed');
+
+//     if (mysqli_num_rows($select_users) > 0) {
+//         $row = mysqli_fetch_assoc($select_users);
+
+//         if ($row['user_type'] == 'admin') {
+//             $_SESSION['admin_name'] = $row['name'];
+//             $_SESSION['admin_email'] = $row['email'];
+//             $_SESSION['admin_id'] = $row['id'];
+//             header('location:admin_page.php');
+//         } elseif ($row['user_type'] == 'user') {
+//             $_SESSION['user_name'] = $row['name'];
+//             $_SESSION['user_email'] = $row['email'];
+//             $_SESSION['user_id'] = $row['id'];
+//             header('location:home.php');
+//         }
+//     } else {
+//         $message[] = 'incorrect email or password!';
+//     }
+// }
 include 'config.php';
 session_start();
 
 if (isset($_POST['submit'])) {
-
-
     $email = mysqli_real_escape_string($conn, $_POST['email']);
 
-    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+    // retrieve the hashed password from the database for the provided email
+    $query = "SELECT password FROM users WHERE email='$email'";
+    $result = mysqli_query($conn, $query);
+    $hashed_password = mysqli_fetch_assoc($result)['password'];
 
-    $select_users = mysqli_query($conn, "SELECT * FROM 'users' WHERE email ='$email' AND password='$pass'") or die('query failed');
+    // verify the entered password against the hashed password
+    if (password_verify($_POST['password'], $hashed_password)) {
 
-    if (mysqli_num_rows($select_users) > 0) {
-        $row = mysqli_fetch_assoc($select_users);
+        // select the user from the database
+        $select_users = mysqli_query($conn, "SELECT * FROM users WHERE email ='$email'") or die('query failed');
 
-        if ($row['user_type'] == 'admin') {
-            $_SESSION['admin_name'] = $row['name'];
-            $_SESSION['admin_email'] = $row['email'];
-            $_SESSION['admin_id'] = $row['id'];
-            header('location:admin_page.php');
-        } elseif ($row['user_type'] == 'user') {
-            $_SESSION['user_name'] = $row['name'];
-            $_SESSION['user_email'] = $row['email'];
-            $_SESSION['user_id'] = $row['id'];
-            header('location:home.php');
+        if (mysqli_num_rows($select_users) > 0) {
+            $row = mysqli_fetch_assoc($select_users);
+
+            if ($row['user_type'] == 'admin') {
+                $_SESSION['admin_name'] = $row['name'];
+                $_SESSION['admin_email'] = $row['email'];
+                $_SESSION['admin_id'] = $row['id'];
+                header('location:admin_page.php');
+            } elseif ($row['user_type'] == 'user') {
+                $_SESSION['user_name'] = $row['name'];
+                $_SESSION['user_email'] = $row['email'];
+                $_SESSION['user_id'] = $row['id'];
+                header('location:home.php');
+            }
         }
     } else {
         $message[] = 'incorrect email or password!';
     }
 }
+
 ?>
 
 
