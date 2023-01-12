@@ -150,10 +150,18 @@ html, body{
 
 }
 .option-sub{
-    background-color: purple;
+  background-color: rgb(60, 83, 209);
 }
 .delete-sub{
-    background-color: purple;
+  background-color: rgb(91, 213, 235);
+}
+
+@keyframes fadeIn {
+  0%{
+      transform: translateY(1rem);
+      opacity: 0.2s;
+  }
+  
 }
 
 .form-container form p{
@@ -171,4 +179,18 @@ html, body{
 
 }
 
+
+/* Media queries allow you to apply different styles based on the characteristics of the device displaying the web page. In this case, the code sets the font size of the entire HTML document to 55% when the screen width is 991 pixels or less, and 50% when the screen width is 450 pixels or less. This allows for responsive design, where the layout and styling of the page adjusts based on the size of the device's screen. */
+  /* media queries */
+  @media (max-width:991px){
+    html{
+        font-size: 55%;
+    }
+  }
+ 
+  @media (max-width:450px){
+    html{
+        font-size: 50%;
+    }
+  }
 

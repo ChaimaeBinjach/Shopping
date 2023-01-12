@@ -104,12 +104,19 @@ html, body{
 
 }
 .option-sub{
-    background-color: purple;
+    background-color: rgb(60, 83, 209);
 }
 .delete-sub{
-    background-color: purple;
+    background-color: rgb(91, 213, 235);
 }
 
+@keyframes fadeIn {
+    0%{
+        transform: translateY(1rem);
+        opacity: 0.2s;
+    }
+    
+}
   .header{
     position: sticky;
     top: 0;
@@ -126,7 +133,7 @@ html, body{
     justify-content: space-between;
     padding: 2.5rem;
     margin: 0 auto;
-    max-width: 1300px;/*here was 1200px*/
+    max-width: 1500px;/*here was 1200px*/
 
   }
 
@@ -160,7 +167,7 @@ html, body{
     color: #6e166e;
   }
 
-  .header .flex .account-b{
+  .header .flex .account-box{
     /* position: absolute;
     top:40px;
     right:2rem;
@@ -174,13 +181,57 @@ html, body{
     border-radius: 0.5rem;
     padding: 2rem;
     text-align: center;
-    
+    border: #2c2c2c;
+    display: none;
+    animation: fadeIn .2s linear;
   }
-  .header .flex .account-b p{
+  .header .flex .account-box p{
     font-size: 2rem;
     color:#0f0f0f;
     margin-bottom: 0.5rem;
   }
-  .header .flex .account-b p span{
+  .header .flex .account-box p span{
     color: #6e166e;
+  }
+  .header .flex .account-box .delete-btn{
+    margin-top: 0;
+  }
+  /* #menubtn{
+    display: none;
+  } */
+  .header .flex .account-box .active{
+    display: inline-block;
+  }
+
+
+  /* media queries */
+  @media (max-width:991px){
+    html{
+        font-size: 55%;
+    }
+  }
+  @media (max-width:768px){
+    #menubtn{
+        display: inline-block;
+    }
+    .header .flex .navbar{
+        position: absolute;
+        top: 99%;
+        right: 0;
+        left: 0;
+        background-color: #faf5fa;
+        border-top: #c5a6c3;
+        border-bottom: #c5a6c3;
+
+    }
+  }
+
+  /* .header .flex .navbar a{
+    margin: 2rem;
+    display: block;
+  } */
+  @media (max-width:450px){
+    html{
+        font-size: 50%;
+    }
   }
