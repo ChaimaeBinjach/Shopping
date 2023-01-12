@@ -1,54 +1,84 @@
 <?php
-session_start();
+// session_start();
 
+// include 'config.php';
+
+// if (isset($_POST['submit'])) {
+
+//     $email = $_POST['email'];
+//     $password = $_POST['password'];
+
+//     // Validate user input
+//     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//         $message[] = 'Invalid email format';
+//     }
+
+//     if (strlen($password) < 8) {
+//         $message[] = 'Password must be at least 8 characters';
+//     }
+
+//     if (empty($message)) {
+//         // Prepare SQL statement
+//         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+//         $stmt->bind_param("ss", $email, $password);
+
+//         // Execute statement and get the result
+//         $stmt->execute();
+//         $result = $stmt->get_result();
+
+//         if ($result->num_rows > 0) {
+//             $row = $result->fetch_assoc();
+
+//             // Hash the password
+//             $password = password_hash($password, PASSWORD_DEFAULT);
+
+//             if ($row['user_type'] == 'admin') {
+//                 $_SESSION['admin_name'] = $row['name'];
+//                 $_SESSION['admin_email'] = $row['email'];
+//                 $_SESSION['admin_id'] = $row['id'];
+//                 header('Location: location:admin_page.php');
+//                 exit;
+//             } else if ($row['user_type'] == 'user') {
+//                 $_SESSION['user_name'] = $row['name'];
+//                 $_SESSION['user_email'] = $row['email'];
+//                 $_SESSION['user_id'] = $row['id'];
+//                 header('Location: location:home.php');
+//                 exit;
+//             }
+//         } else {
+//             $message[] = 'Incorrect email or password';
+//         }
+//         $stmt->close();
+//     }
+// }
 include 'config.php';
+session_start();
 
 if (isset($_POST['submit'])) {
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
 
-    // Validate user input
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $message[] = 'Invalid email format';
-    }
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
 
-    if (strlen($password) < 8) {
-        $message[] = 'Password must be at least 8 characters';
-    }
+    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
 
-    if (empty($message)) {
-        // Prepare SQL statement
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
-        $stmt->bind_param("ss", $email, $password);
+    $select_users = mysqli_query($conn, "SELECT * FROM 'users' WHERE email ='$email' AND password='$pass'") or die('query failed');
 
-        // Execute statement and get the result
-        $stmt->execute();
-        $result = $stmt->get_result();
+    if (mysqli_num_rows($select_users) > 0) {
+        $row = mysqli_fetch_assoc($select_users);
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-
-            // Hash the password
-            $password = password_hash($password, PASSWORD_DEFAULT);
-
-            if ($row['user_type'] == 'admin') {
-                $_SESSION['admin_name'] = $row['name'];
-                $_SESSION['admin_email'] = $row['email'];
-                $_SESSION['admin_id'] = $row['id'];
-                header('Location: location:admin_page.php');
-                exit;
-            } else if ($row['user_type'] == 'user') {
-                $_SESSION['user_name'] = $row['name'];
-                $_SESSION['user_email'] = $row['email'];
-                $_SESSION['user_id'] = $row['id'];
-                header('Location: location:home.php');
-                exit;
-            }
-        } else {
-            $message[] = 'Incorrect email or password';
+        if ($row['user_type'] == 'admin') {
+            $_SESSION['admin_name'] = $row['name'];
+            $_SESSION['admin_email'] = $row['email'];
+            $_SESSION['admin_id'] = $row['id'];
+            header('location:admin_page.php');
+        } elseif ($row['user_type'] == 'user') {
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_email'] = $row['email'];
+            $_SESSION['user_id'] = $row['id'];
+            header('location:home.php');
         }
-        $stmt->close();
+    } else {
+        $message[] = 'incorrect email or password!';
     }
 }
 ?>
