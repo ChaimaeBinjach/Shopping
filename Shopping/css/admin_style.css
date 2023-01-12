@@ -79,6 +79,8 @@ html, body{
   .message i:hover{
     transform: rotate(100deg);
   }
+
+  
   .white-sub,.sub{
     background-color:rgb(207, 247, 207) ;
     text-transform: capitalize;
