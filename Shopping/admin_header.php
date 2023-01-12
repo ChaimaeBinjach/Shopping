@@ -3,7 +3,6 @@
     <div class="flex">
 
         <a href="admin_page.php" class="logo">Admin<span>Shiny</span></a>
-
         <nav class="navbar">
             <a href="admin_page.php">Home</a>
             <a href="admin_products.php">Products</a>

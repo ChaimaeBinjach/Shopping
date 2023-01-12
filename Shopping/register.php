@@ -50,6 +50,7 @@ if (isset($_POST['submit'])) {
     if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $pass)) {
         $message[] = 'password should be minimum 8 character at least 1 Alphabet and 1 Number:';
     }
+
     if (empty($message)) {
         $query = "SELECT * FROM `users` WHERE email = ?";
         $stmt = mysqli_prepare($conn, $query);
