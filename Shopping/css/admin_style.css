@@ -110,8 +110,8 @@ section{
   margin-top: 1rem;
   padding:1rem 3rem;
   cursor: pointer;
-  color:var(--white);
-  font-size: 1.8rem;
+  color:black;
+  font-size: 2rem;
   border-radius: .5rem;
   text-transform: capitalize;
 }
@@ -128,11 +128,11 @@ section{
 }
 
 .option-sub{
-  background-color: var(--orange);
+  background-color: rgb(245, 178, 236);
 }
 
 .delete-sub{
-  background-color: var(--red);
+  background-color: rgb(202, 243, 219);
 }
 
 .white-sub:hover{
@@ -334,6 +334,92 @@ align-items: flex-start;
   font-size: 3.5rem;
   border: .1rem solid rgb(206, 174, 206);
 }
+
+.show-products .box-container{
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, 30rem); */
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)) ; */
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 4em;
+  max-width: 1500px;
+  margin: 0 auto;
+  align-items: flex-start;
+  
+  }
+  .show-products{
+    padding-top: 0;
+  }
+  .show-products .box-container .box{
+    text-align: center;
+    padding: 2rem;
+    border-radius: 2rem;
+    border: 0.5rem solid rgb(206, 174, 206);
+    box-shadow: 1rem  1rem 1rem rgba(48, 47, 47, 0.1);
+    background-color: rgb(253, 240, 253);
+
+  }
+
+  .show-products .box-container .box img{
+    height: 25rem;
+
+  }
+  .show-products .box-container .box .name{
+    font-size: 2.5rem;
+    padding: 1rem 0;
+    color: black;
+  }
+  .show-products .box-container .box .price{
+    font-size: 3rem;
+    padding: 1rem 0;
+    color: blue;
+  }
+  .edit-product-form{
+    min-height: 100vh;
+    background-color: rgba(0,0,0,.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:2rem;
+    overflow-y: scroll;
+    position: fixed;
+    top:0; 
+    left:0; 
+    z-index: 1200;
+    width: 100%;
+ }
+ 
+ .edit-product-form form{
+    width: 50rem;
+    padding:3rem;
+    text-align: center;
+    background-color: rgb(253, 240, 253);
+    border-radius: 3rem;
+ }
+ 
+ .edit-product-form form img{
+    height: 30rem;
+    margin-bottom: 1rem;
+ }
+ 
+ .edit-product-form form .box{
+    margin:1rem 0;
+    padding:1.4rem 1.4rem;
+    border-radius: 2rem;
+    background-color: rgb(253, 240, 253);
+    border: 0.5rem solid rgb(206, 174, 206);
+    font-size: 2rem;
+    width: 100%;
+    color:black;
+   
+ }
+
+
+
+
+ 
+
 
   /* media queries */
   @media (max-width:991px){
