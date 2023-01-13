@@ -35,9 +35,9 @@
   background-color: transparent;
 }
 
-*::-webkit-scrollbar-thumb{
+/* *::-webkit-scrollbar-thumb{
   background-color: var(--purple);
-}
+} */
 
 html{
   font-size: 62.5%;
@@ -52,12 +52,15 @@ section{
   padding:3rem 2rem;
 }
 
-.title{
-  text-align: center;
-  margin-bottom: 2rem;
+.heading{
   text-transform: uppercase;
-  color:var(--black);
-  font-size: 4rem;
+  /* text-underline-offset: 10px; */
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color:black;
+  font-size: 2.5rem;
+  
 }
 
 .empty{
@@ -86,7 +89,7 @@ section{
 
 .message span{
   font-size: 2rem;
-  color:var(--black);
+  color:black;
 }
 
 .message i{
@@ -96,7 +99,7 @@ section{
 }
 
 .message i:hover{
-  transform: rotate(90deg);
+  transform: rotate(100deg);
 }
 
 .sub,
@@ -116,7 +119,7 @@ section{
 .sub:hover,
 .option-sub:hover,
 .delete-sub:hover{
-  background-color: var(--black);
+  background-color: black;
 }
 
 .white-sub,
@@ -146,10 +149,12 @@ section{
 
 .header{
   position: sticky;
-  top:0; left:0; right:0;
-  z-index: 1000;
-  background-color: var(--white);
-  box-shadow: var(--box-shadow);
+  top:0; 
+  left: 0;
+   right:0;
+  z-index: 1500;
+  background-color: rgb(241, 239, 241);
+  box-shadow: 1rem  1rem 1rem rgba(0,0,0,.1);
 }
 
 .header .flex{
@@ -163,7 +168,7 @@ section{
 }
 
 .header .flex .logo{
-  font-size: 2.5rem;
+  font-size: 3rem;
   color:var(--black);
 }
 
@@ -172,9 +177,12 @@ section{
 }
 
 .header .flex .navbar a{
+  /* text-underline-offset: auto; */
+  margin-left:1rem;
   margin:0 1rem;
-  font-size: 2rem;
+  font-size: 2.4rem;
   color:var(--black);
+  
 }
 
 .header .flex .navbar a:hover{
@@ -186,6 +194,9 @@ section{
   font-size: 2.5rem;
   cursor: pointer;
   color:var(--black);
+}
+.header .flex .icons .fasfa-bars{
+  display: none;
 }
 
 .header .flex .icons div:hover{
@@ -202,7 +213,7 @@ section{
   text-align: center;
   border-radius: .5rem;
   border:var(--border);
-  background-color: var(--white);
+  background-color: beige;
   display: none;
   animation:fadeIn .2s linear;
 }
@@ -222,7 +233,13 @@ section{
 }
 
 .header .flex .account-box .delete-btn{
-  margin-top: 0;
+  padding: 1rem;
+  font-size: 2rem;
+  color: black;
+  background-color:rgb(199, 196, 196);
+  border-radius:2rem ;
+  border:beige ;
+  margin-top: 2;
 }
 
 .header .flex .account-box div{
@@ -241,6 +258,81 @@ section{
 
 #menu-btn{
   display: none;
+}
+
+.dashboard .box-container{
+display: grid;
+/* grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)) ; */
+grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+gap: 3rem;
+padding: 5em;
+max-width: 1500px;
+margin:  auto;
+align-items: flex-start;
+
+}
+
+.dashboard .box-container .box{
+  border-radius:8rem ;
+  padding: 4em;
+  background-color: rgb(192, 181, 181);
+  box-shadow: 2rem  2rem 2rem rgba(48, 47, 47, 0.1);
+  border: rgba(61, 49, 60, 0.1);
+  text-align: center;
+}
+.dashboard .box-container .box h2{
+  color: black;
+  font-size:3rem ;
+}
+.dashboard .box-container .box p{
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 1.77rem;
+  color: black;
+  background-color:rgb(199, 196, 196);
+  border-radius:5rem ;
+  border:beige ;
+
+}
+.add-product h1{
+  text-transform: uppercase;
+  /* text-underline-offset: 10px; */
+  text-align: center;
+  margin-top: 2rem;
+  margin-left: 3rem;
+  margin-bottom: 1.5rem;
+  color:black;
+  font-size: 3rem;
+
+}
+.add-product form{
+  background-color: rgb(226, 223, 225);
+  border-radius: 5rem;
+  padding:3rem;
+  text-align: center;
+  border:.1rem solid rgb(206, 174, 206);
+  box-shadow: 1rem  1rem 1rem rgba(48, 47, 47, 0.1);
+  max-width: 60rem;
+  margin:0 auto;
+  
+ 
+}
+
+.add-product form h2{
+  font-size: 2.4rem;
+  text-transform: lowercase;
+  color: black;
+  margin-bottom: 1.3rem;
+}
+.add-product form .box{ 
+  width: 100%;
+  background-color: rgb(212, 211, 209);
+  border-radius: 2rem;
+  margin: 1rem auto;
+  padding:2rem 1.4rem ;
+  color: black;
+  font-size: 3.5rem;
+  border: .1rem solid rgb(206, 174, 206);
 }
 
   /* media queries */

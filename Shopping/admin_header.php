@@ -1,3 +1,13 @@
+<?php
+if (isset($message) && count($message) > 0) {
+    foreach ($message as $message) {
+        echo '<div class="message">
+            <span>' . $message . '</span>
+            <i class ="time" onclick="this.parentElement.remove();"></i>
+          </div>';
+    }
+}
+?>
 <header class="header">
 
     <div class="flex">
@@ -13,7 +23,7 @@
         </nav>
 
         <div class="icons">
-            <div id="menubtn" class="fas fa-bars"></div>
+            <div id="menubtn" class="fasfa-bars"></div>
             <div id="userbtn" class="fas fa-user"></div>
         </div>
 

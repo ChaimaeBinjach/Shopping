@@ -1,24 +1,24 @@
 <?php
-include 'config.php';
-
-session_start();
-
-if (isset($_SESSION['admin_id'])) {
-    $admin_id = $_SESSION['admin_id'];
-} elseif (!isset($_SESSION['admin_id'])) {
-
-    header('location:login.php');
-}
 // include 'config.php';
 
-// if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
+// session_start();
+
+// if (isset($_SESSION['admin_id'])) {
+//     $admin_id = $_SESSION['admin_id'];
+// } elseif (!isset($_SESSION['admin_id'])) {
+
+//     header('location:login.php');
 // }
-// $admin_id = $_SESSION['admin_id'];
-// if (!$admin_id) {
-//     header('location: login.php');
-//     exit;
-// }
+include 'config.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$admin_id = $_SESSION['admin_id'];
+if (!$admin_id) {
+    header('location: login.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,97 @@ if (isset($_SESSION['admin_id'])) {
     include 'admin_header.php';
 
     ?>
+    <!-- admin dashboard section starts -->
+    <section class="dashboard">
+        <h1 class="heading">Infos:</h1>
 
+        <div class="box-container">
+            <div class="box">
+
+                <?php
+                $total_pending = 0;
+                $select_pending = mysqli_query($conn, "SELECT total_price FROM `orders` WHERE payment_status ='pending'") or die('query failed');
+                if (mysqli_num_rows($select_pending) > 0) {
+                    while ($fetch_pendings = mysqli_fetch_assoc($select_pending)) {
+                        $total_price = $fetch_pendings['total price'];
+                        $total_pendings += $total_price;
+                    };
+                };
+                ?>
+                <h2><?php echo $total_pending; ?></h2>
+                <p>Amount pending</p>
+            </div>
+            <div class="box">
+
+                <?php
+                $total_completed = 0;
+                $select_completed = mysqli_query($conn, "SELECT total_price FROM `orders` WHERE payment_status ='completed'") or die('query failed');
+                if (mysqli_num_rows($select_completed) > 0) {
+                    while ($fetch_completed = mysqli_fetch_assoc($select_completed)) {
+                        $total_price = $fetch_completed['total price'];
+                        $total_completed += $total_price;
+                    };
+                };
+                ?>
+                <h2><?php echo $total_completed; ?></h2>
+                <p>Paid in full</p>
+            </div>
+            <div class="box">
+                <?php
+                $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
+                $number_of_products = mysqli_num_rows($select_products);
+                ?>
+                <h2><?php echo $number_of_products; ?></h2>
+                <p>New products added</p>
+            </div>
+            <div class="box">
+                <?php
+                $select_messages = mysqli_query($conn, "SELECT * FROM `message` ") or die('query failed');
+                $number_of_messages  = mysqli_num_rows($select_messages);
+                ?>
+                <h2><?php echo $number_of_messages; ?></h2>
+                <p>New messages</p>
+            </div>
+            <div class="box">
+                <?php
+                $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE user_type ='user'") or die('query failed');
+                $number_of_users  = mysqli_num_rows($select_users);
+                ?>
+                <h2><?php echo $number_of_users; ?></h2>
+                <p>Users in general</p>
+            </div>
+            <div class="box">
+                <?php
+                $select_admins = mysqli_query($conn, "SELECT * FROM `users` WHERE user_type ='admin'") or die('query failed');
+                $number_of_admins  = mysqli_num_rows($select_admins);
+                ?>
+                <h2><?php echo $number_of_admins; ?></h2>
+                <p>Admins in general</p>
+            </div>
+            <div class="box">
+                <?php
+                $select_account = mysqli_query($conn, "SELECT * FROM `users` ") or die('query failed');
+                $number_of_account  = mysqli_num_rows($select_account);
+                ?>
+                <h2><?php echo $number_of_account; ?></h2>
+                <p>Number of users</p>
+            </div>
+            <div class="box">
+                <?php
+                $select_orders = mysqli_query($conn, "SELECT * FROM `orders`") or die('query failed');
+                $number_of_orders = mysqli_num_rows($select_orders);
+                ?>
+                <h2><?php echo $number_of_orders; ?></h2>
+                <p>Placed the order </p>
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+    <!-- admin dashboard section ends -->
 
 
 
