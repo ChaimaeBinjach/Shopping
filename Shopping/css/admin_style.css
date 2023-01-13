@@ -451,4 +451,7 @@ align-items: flex-start;
     html{
         font-size: 50%;
     }
+    .title{
+      font-size: 3rem;
+    }
   }
