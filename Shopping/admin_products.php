@@ -18,7 +18,7 @@ if (isset($_POST['add_product'])) {
     $img_ext = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
     if (!in_array($img_ext, $allowed_ext)) {
         $message[] = 'Invalid image file type';
-    } elseif ($image_size > 200000) {
+    } elseif ($image_size > 20000000) {
         $message[] = 'image size is too big';
     } else {
         $select_product_name = mysqli_query($conn, "SELECT * FROM `products` WHERE name ='$name'") or die('query failed');
@@ -63,7 +63,7 @@ if (isset($_POST['update_product'])) {
     $update_old_image = $_POST['update_old_image'];
 
     if (!empty($update_image)) {
-        if ($update_image_size > 2000000) {
+        if ($update_image_size > 20000000) {
             $message[] = 'image file size is too large';
         } else {
             mysqli_query($conn, "UPDATE `products` SET image = '$update_image' WHERE id = '$update_p_id'") or die('query failed');
@@ -129,7 +129,7 @@ if (isset($_POST['update_product'])) {
                     <div class="box">
                         <img src="img_uploaded/<?php echo $fetch_products['image']; ?>" alt="">
                         <div class="name"><?php echo $fetch_products['name']; ?></div>
-                        <div class="price">$<?php echo $fetch_products['price']; ?>/-</div>
+                        <div class="price"><?php echo $fetch_products['price']; ?>€</div>
                         <a href="admin_products.php?update=<?php echo $fetch_products['id']; ?>" class="option-sub">update</a>
                         <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-sub" onclick="return confirm('are you sure you want to delete it?');">delete</a>
                     </div>

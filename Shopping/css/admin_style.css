@@ -116,11 +116,7 @@ section{
   text-transform: capitalize;
 }
 
-.sub:hover,
-.option-sub:hover,
-.delete-sub:hover{
-  background-color: black;
-}
+
 
 .white-sub,
 .sub{
@@ -137,7 +133,12 @@ section{
 
 .white-sub:hover{
   background-color: var(--white);
-  color:var(--black);
+  color:rgb(223, 179, 223);
+}
+.sub:hover,
+.option-sub:hover,
+.delete-sub:hover{
+  background-color: bisque;
 }
 
 @keyframes fadeIn {
@@ -356,11 +357,10 @@ align-items: flex-start;
     padding: 2rem;
     border-radius: 2rem;
     border: 0.5rem solid rgb(206, 174, 206);
-    box-shadow: 1rem  1rem 1rem rgba(48, 47, 47, 0.1);
+    box-shadow: 1rem  1rem 1rem rgba(218, 207, 207, 0.1);
     background-color: rgb(253, 240, 253);
-
   }
-
+ 
   .show-products .box-container .box img{
     height: 25rem;
 
