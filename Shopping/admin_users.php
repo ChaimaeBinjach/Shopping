@@ -49,7 +49,7 @@ if (isset($_GET['delete'])) {
     ?>
     <section class="users">
 
-        <h1 class="title"> Accounts for users </h1>
+        <h1 class="title"> Accounts for users: </h1>
 
         <div class="box-container">
             <?php
@@ -61,9 +61,9 @@ if (isset($_GET['delete'])) {
                     <p> username : <span><?php echo $fetch_users['name']; ?></span> </p>
                     <p> email : <span><?php echo $fetch_users['email']; ?></span> </p>
                     <p> user type : <span style="color:<?php if ($fetch_users['user_type'] == 'admin') {
-                                                            echo 'var(--orange)';
+                                                            echo 'purple';
                                                         } ?>"><?php echo $fetch_users['user_type']; ?></span> </p>
-                    <a href="admin_users.php?delete=<?php echo $fetch_users['id']; ?>" onclick="return confirm('delete this user?');" class="delete-btn">delete user</a>
+                    <a href="admin_users.php?delete=<?php echo $fetch_users['id']; ?>" onclick="return confirm('are you sure you want to delete this user?');" class="delete-sub">delete user</a>
                 </div>
             <?php
             };
