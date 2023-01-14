@@ -257,9 +257,9 @@ section{
   text-decoration: underline;
 }
 
-#menu-btn{
+/* #menu-btn{
   display: none;
-}
+} */
 
 .dashboard .box-container{
 display: grid;
@@ -508,10 +508,9 @@ align-items: flex-start;
 .users .box-container .box p span{
   color:blue;
 }
-.users .box-container .box .delete-sub{
+.users .box-container .box .delete-btn{
   margin-top: 0;
 }
-
 .messages h1{
   text-transform: uppercase;
   /* text-underline-offset: 10px; */
@@ -543,7 +542,7 @@ align-items: flex-start;
   border: 0.5rem solid rgb(206, 174, 206);
   box-shadow: 1rem  1rem 1rem rgba(218, 207, 207, 0.1);
   background-color: rgb(253, 240, 253);
-  /* text-align: center; */
+  text-align: center;
 }
 .messages .box-container .box p{
   padding-bottom: 1.5rem;

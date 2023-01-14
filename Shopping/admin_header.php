@@ -21,16 +21,16 @@ if (isset($message) && count($message) > 0) {
             <a href="admin_orders.php">Orders</a>
 
         </nav>
-
         <div class="icons">
             <div id="menubtn" class="fasfa-bars"></div>
-            <div id="userbtn" class="fas fa-user"></div>
+            <div id="userbtn" class="fa fa-user"></div>
         </div>
 
         <div class="account-box">
             <p>username : <span><?php echo $_SESSION['admin_name']; ?></span></p>
             <p>email : <span><?php echo $_SESSION['admin_email']; ?></span></p>
             <a href="logout.php" class="delete-btn">logout</a>
+
         </div>
 
     </div>
