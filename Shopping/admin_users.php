@@ -63,7 +63,7 @@ if (isset($_GET['delete'])) {
                     <p> user type : <span style="color:<?php if ($fetch_users['user_type'] == 'admin') {
                                                             echo 'purple';
                                                         } ?>"><?php echo $fetch_users['user_type']; ?></span> </p>
-                    <a href="admin_users.php?delete=<?php echo $fetch_users['id']; ?>" onclick="return confirm('are you sure you want to delete this user?');" class="delete-sub">delete user</a>
+                    <a href="admin_users.php?delete=<?php echo $fetch_users['id']; ?>" onclick="return confirm('are you sure you want to delete this user?');" class="delete-sub">delete </a>
                 </div>
             <?php
             };

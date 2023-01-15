@@ -45,7 +45,7 @@ html{
 }
 
 body{
-  background-color: var(--light-bg);
+  background-color: whitesmoke;
 }
 
 section{
@@ -120,20 +120,20 @@ section{
 
 .white-sub,
 .sub{
-  background-color: rgb(201, 171, 201);
+  background-color: rgb(213, 230, 224);
 }
 
 .option-sub{
-  background-color: rgb(220, 248, 187);
+  background-color: rgb(155, 190, 255);
 }
 
 .delete-sub{
-  background-color: rgb(184, 216, 197);
+  background-color: rgb(255, 114, 104);
 }
 
 .white-sub:hover{
   background-color: var(--white);
-  color:rgb(223, 179, 223);
+  color:rgb(213, 236, 236);
 }
 .sub:hover,
 .option-sub:hover,
@@ -154,7 +154,7 @@ section{
   left: 0;
    right:0;
   z-index: 1500;
-  background-color: rgb(241, 239, 241);
+  background-color: white;
   box-shadow: 1rem  1rem 1rem rgba(0,0,0,.1);
 }
 
@@ -169,7 +169,7 @@ section{
 }
 
 .header .flex .logo{
-  font-size: 3rem;
+  font-size: 2.5rem;
   color:var(--black);
 }
 
@@ -181,8 +181,8 @@ section{
   /* text-underline-offset: auto; */
   margin-left:1rem;
   margin:0 1rem;
-  font-size: 2.4rem;
-  color:var(--black);
+  font-size: 2.2rem;
+  color:rgb(94, 93, 93);
   
 }
 
@@ -209,12 +209,12 @@ section{
   top:120%; right:2rem;
   width: 30rem;
   box-shadow: var(--box-shadow);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding:2rem;
   text-align: center;
-  border-radius: .5rem;
-  border:var(--border);
-  background-color: beige;
+  border-radius: 0.5rem;
+  border:black;
+  background-color: rgb(247, 247, 239);
   display: none;
   animation:fadeIn .2s linear;
 }
@@ -239,7 +239,7 @@ section{
   color: black;
   background-color:rgb(199, 196, 196);
   border-radius:2rem ;
-  border:beige ;
+  border:rgb(10, 10, 10) ;
   margin-top: 2;
 }
 
@@ -275,9 +275,9 @@ align-items: flex-start;
 
 .dashboard .box-container .box{
   border-radius:4rem ;
-  padding: 3em;
-  background-color: rgb(219, 218, 218);
-  border: rgb(0, 0, 0);
+  padding: 4em;
+  background-color: rgb(240, 239, 239);
+  border: black;
   /* box-shadow: 1rem  1rem 1rem rgba(43, 42, 42, 0.1); */
   
   text-align: center;
@@ -291,7 +291,7 @@ align-items: flex-start;
   padding: 1rem;
   font-size: 1.77rem;
   color: black;
-  background-color:rgb(199, 196, 196);
+  background-color:rgb(224, 224, 224);
   border-radius:5rem ;
   border:beige ;
 
@@ -312,7 +312,7 @@ align-items: flex-start;
   border-radius: 5rem;
   padding:3rem;
   text-align: center;
-  border:.1rem solid rgb(224, 208, 224);
+  border:.1rem solid rgb(236, 232, 236);
   box-shadow: 1rem  1rem 1rem rgba(48, 47, 47, 0.1);
   max-width: 60rem;
   margin:0 auto;
@@ -328,13 +328,13 @@ align-items: flex-start;
 }
 .add-product form .box{ 
   width: 100%;
-  background-color: rgb(223, 220, 216);
-  border-radius: 2rem;
+  background-color: rgb(231, 230, 229);
+  border-radius: 1rem;
   margin: 1.5rem auto;
   padding:1rem 1.4rem ;
   color: black;
   font-size: 2.5rem;
-  border: 0.1rem solid rgb(209, 190, 209);
+  border: 0.1rem solid rgb(241, 239, 241);
 }
 
 .show-products .box-container{
@@ -357,9 +357,9 @@ align-items: flex-start;
     text-align: center;
     padding: 2rem;
     border-radius: 2rem;
-    border: 0.5rem solid rgb(206, 174, 206);
-    box-shadow: 1rem  1rem 1rem rgba(218, 207, 207, 0.1);
-    background-color: rgb(253, 240, 253);
+    border: 0.5rem solid rgb(221, 220, 220);
+    box-shadow: 1rem  1rem 1rem rgba(196, 195, 195, 0.1);
+    background-color: rgb(255, 252, 255);
   }
  
   .show-products .box-container .box img{
@@ -395,7 +395,7 @@ align-items: flex-start;
     width: 50rem;
     padding:3rem;
     text-align: center;
-    background-color: rgb(253, 240, 253);
+    background-color: rgb(247, 241, 247);
     border-radius: 3rem;
  }
  
@@ -438,9 +438,9 @@ align-items: flex-start;
   
   padding: 2rem;
   border-radius: 2rem;
-  border: 0.5rem solid rgb(206, 174, 206);
+  border: 0.5rem solid rgb(158, 158, 158);
   box-shadow: 1rem  1rem 1rem rgba(218, 207, 207, 0.1);
-  background-color: rgb(253, 240, 253);
+  background-color: white;
 }
 
 
@@ -462,8 +462,8 @@ align-items: flex-start;
   border-radius: 0.5rem;
   margin:0.5rem 0;
   width: 100%;
-  background-color: beige;
-  border:purple;
+  background-color:whitesmoke;
+  border:rgb(121, 121, 121);
   padding:1.2rem 1.2rem;
   font-size: 1.8rem;
   color:black;
@@ -493,9 +493,9 @@ align-items: flex-start;
   
   padding: 2rem;
   border-radius: 2rem;
-  border: 0.5rem solid rgb(206, 174, 206);
+  border: 0.5rem solid rgb(141, 141, 141);
   box-shadow: 1rem  1rem 1rem rgba(218, 207, 207, 0.1);
-  background-color: rgb(253, 240, 253);
+  background-color:white;
   text-align: center;
 }
 .users .box-container .box p{
@@ -539,9 +539,9 @@ align-items: flex-start;
   
   padding: 2rem;
   border-radius: 2rem;
-  border: 0.5rem solid rgb(206, 174, 206);
+  border: 0.5rem solid rgb(131, 131, 131);
   box-shadow: 1rem  1rem 1rem rgba(218, 207, 207, 0.1);
-  background-color: rgb(253, 240, 253);
+  background-color: rgb(253, 253, 253);
   text-align: center;
 }
 .messages .box-container .box p{

@@ -65,7 +65,7 @@ if (isset($_GET['delete'])) {
                         <p> number : <span><?php echo $fetch_message['number']; ?></span> </p>
                         <p> email : <span><?php echo $fetch_message['email']; ?></span> </p>
                         <p> message : <span><?php echo $fetch_message['message']; ?></span> </p>
-                        <a href="admin_contacts.php?delete=<?php echo $fetch_message['id']; ?>" onclick="return confirm('are you sure you want to delete this message?');" class="delete-sub">delete message</a>
+                        <a href="admin_contacts.php?delete=<?php echo $fetch_message['id']; ?>" onclick="return confirm('are you sure you want to delete this message?');" class="delete-sub">delete </a>
                     </div>
             <?php
                 };
