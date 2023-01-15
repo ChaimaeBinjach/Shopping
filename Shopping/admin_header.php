@@ -19,6 +19,7 @@ if (isset($message) && count($message) > 0) {
             <a href="admin_contacts.php">Messages</a>
             <a href="admin_users.php">Users</a>
             <a href="admin_orders.php">Orders</a>
+            <a href="home.php">Home</a>
 
         </nav>
         <div class="icons">

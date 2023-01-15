@@ -20,14 +20,14 @@ if (isset($message)) {
 ?>
 
 <header class="header">
+    <?php if (!isset($_SESSION['user_id'])) { ?>
+        <div class="header1">
+            <div class="flex">
 
-    <div class="header1">
-        <div class="flex">
-
-            <p><a href="login.php">Sign in </a> <a href="register.php"> Sign up</a> </p>
+                <p><a href="login.php">Sign in </a> <a href="register.php"> Sign up</a> </p>
+            </div>
         </div>
-    </div>
-
+    <?php } ?>
     <div class="header2">
         <div class="flex">
             <a href="home.php" class="logo"><span>Shiny</span>Shop </a>
@@ -37,7 +37,12 @@ if (isset($message)) {
                 <a href="orders.php">Orders</a>
                 <!-- <a href="about.php">About</a> -->
                 <a href="contact.php">Contact</a>
-
+                <?php
+                if (isset($_SESSION['user_type'])) {
+                    if ($_SESSION['user_type'] === 'admin') { ?>
+                        <a href="admin_page.php">Admin</a>
+                <?php }
+                } ?>
             </nav>
             <div class="icons">
                 <div id="menu-btn" class="fas fa-bars"></div>

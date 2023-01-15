@@ -108,16 +108,17 @@ if (isset($_POST['submit'])) {
         if (mysqli_num_rows($select_users) > 0) {
             $row = mysqli_fetch_assoc($select_users);
 
-
+            $_SESSION['admin_name'] = $row['name'];
+            $_SESSION['admin_email'] = $row['email'];
+            $_SESSION['admin_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_email'] = $row['email'];
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_type']=$row['user_type'];
             if ($row['user_type'] == 'admin') {
-                $_SESSION['admin_name'] = $row['name'];
-                $_SESSION['admin_email'] = $row['email'];
-                $_SESSION['admin_id'] = $row['id'];
                 header('location:admin_page.php');
             } elseif ($row['user_type'] == 'user') {
-                $_SESSION['user_name'] = $row['name'];
-                $_SESSION['user_email'] = $row['email'];
-                $_SESSION['user_id'] = $row['id'];
+
                 header('location:home.php');
             }
         }
