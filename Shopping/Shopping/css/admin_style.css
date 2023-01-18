@@ -120,7 +120,7 @@ section{
 
 .white-sub,
 .sub{
-  background-color: rgb(213, 230, 224);
+  background-color: rgb(236, 171, 245);
 }
 
 .option-sub{
@@ -308,7 +308,7 @@ align-items: flex-start;
 
 }
 .add-product form{
-  background-color: rgb(245, 243, 244);
+  background-color: whitesmoke;
   border-radius: 5rem;
   padding:3rem;
   text-align: center;
