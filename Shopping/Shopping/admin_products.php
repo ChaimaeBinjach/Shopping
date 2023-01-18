@@ -146,7 +146,12 @@ if (isset($_POST['update_product'])) {
 
 
     </secttion>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!-- product crud section ends -->
 
     <!-- show products -->
