@@ -1,15 +1,25 @@
 <?php
-
 include 'config.php';
 session_start();
 
+
+
+
+
 if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
+    if (empty($_POST['email']) || empty($_POST['password'])) {
+        $message[] = "Email and password fields are required";
+    } else {
+        // retrieve the hashed password from the database for the provided email
+        // retrieve the hashed password from the database for the provided email
+        $query = "SELECT password FROM users WHERE email='$email'";
+        $result = mysqli_query($conn, $query);
+        $hashed_password = mysqli_fetch_assoc($result)['password'];
+    }
 
-    // retrieve the hashed password from the database for the provided email
-    $query = "SELECT password FROM users WHERE email='$email'";
-    $result = mysqli_query($conn, $query);
-    $hashed_password = mysqli_fetch_assoc($result)['password'];
+
+
 
     // verify the entered password against the hashed password
     if (password_verify($_POST['password'], $hashed_password)) {
@@ -17,26 +27,25 @@ if (isset($_POST['submit'])) {
         // select the user from the database
         $select_users = mysqli_query($conn, "SELECT * FROM users WHERE email ='$email'") or die('query failed');
 
-        mysqli_stmt_store_result($stmt);
-        if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $name, $email, $user_type);
-            while (mysqli_stmt_fetch($stmt)) {
-                $_SESSION['admin_name'] = $name;
-                $_SESSION['admin_email'] = $email;
-                $_SESSION['admin_id'] = $user_id;
-                $_SESSION['user_name'] = $name;
-                $_SESSION['user_email'] = $email;
-                $_SESSION['user_id'] = $user_id;
-                $_SESSION['user_type'] = $user_type;
-                if ($user_type == 'admin') {
-                    header('location:admin_page.php');
-                } elseif ($user_type == 'user') {
-                    header('location:index.php');
-                }
+        if (mysqli_num_rows($select_users) > 0) {
+            $row = mysqli_fetch_assoc($select_users);
+
+            $_SESSION['admin_name'] = $row['name'];
+            $_SESSION['admin_email'] = $row['email'];
+            $_SESSION['admin_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_email'] = $row['email'];
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_type'] = $row['user_type'];
+            if ($row['user_type'] == 'admin') {
+                header('location:admin_page.php');
+            } elseif ($row['user_type'] == 'user') {
+
+                header('location:index.php');
             }
-        } else {
-            $message[] = "Error fetching user data.";
         }
+    } else {
+        $message[] = 'incorrect email or password!';
     }
 }
 
@@ -75,10 +84,11 @@ if (isset($_POST['submit'])) {
         }
     }
     ?>
+
     <div class="form-container">
         <form action="" method="post">
             <h2>Login :)</h2>
-            <input class="txt" type="email" name="email" placeholder="Enter Your Email..." required value="<?php isset($email) ?  $email : '' ?>">
+            <input class="txt" type="email" name="email" placeholder="Enter Your Email..." required value="<?php echo isset($email) ?  $email : '' ?>">
             <input class="txt" type="password" name="password" placeholder="Enter Your Password..." required>
             <input class="btn" type="submit" value="Login" name="submit">
             <p> Don't you have an account? <a href="register.php">Sign up </a></p>

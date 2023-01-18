@@ -8,34 +8,46 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 if (isset($_POST['add_product'])) {
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    $image = $_FILES['image'];
-    $image_size = $image['size'];
-    $image_tmp_name = $image['tmp_name'];
-    $image_folder = 'img_uploaded/';
-    $allowed_ext = array('jpg', 'jpeg', 'png');
-    $img_ext = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
-    if (!in_array($img_ext, $allowed_ext)) {
-        $message[] = 'Invalid image file type';
-    } elseif ($image_size > 20000000) {
-        $message[] = 'image size is too big';
-    } else {
-        $select_product_name = mysqli_query($conn, "SELECT * FROM `products` WHERE name ='$name'") or die('query failed');
-        if (mysqli_num_rows($select_product_name) > 0) {
-            $message[] = 'Product already added';
+    $name = isset($_POST['name']) ? trim($_POST['name']) : '';
+    $price = isset($_POST['price']) ? $_POST['price'] : '';
+    $image = isset($_FILES['image']) ? $_FILES['image'] : '';
+    $message = [];
+    if (empty($name)) {
+        $message[] = 'Name field is required.';
+    }
+    if (empty($price)) {
+        $message[] = 'Price field is required.';
+    }
+    if (empty($image)) {
+        $message[] = 'Image field is required.';
+    }
+    if (empty($message)) {
+        $image_size = $image['size'];
+        $image_tmp_name = $image['tmp_name'];
+        $image_folder = 'img_uploaded/';
+        $allowed_ext = array('jpg', 'jpeg', 'png');
+        $img_ext = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
+        if (!in_array($img_ext, $allowed_ext)) {
+            $message[] = 'Invalid image file type';
+        } elseif ($image_size > 20000000) {
+            $message[] = 'image size is too big';
         } else {
-            $image_name = md5(time() . rand()) . '.' . $img_ext;
-            $image_folder .= $image_name;
-            if (move_uploaded_file($image_tmp_name, $image_folder)) {
-                $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name,price, image) VALUES('$name','$price','$image_name' ) ") or die('query failed');
-                if ($add_product_query) {
-                    $message[] = 'Product added! Perfect.';
-                } else {
-                    $message[] = 'error while adding product';
-                }
+            $select_product_name = mysqli_query($conn, "SELECT * FROM `products` WHERE name ='$name'") or die('query failed');
+            if (mysqli_num_rows($select_product_name) > 0) {
+                $message[] = 'Product already added';
             } else {
-                $message[] = 'error while uploading image';
+                $image_name = md5(time() . rand()) . '.' . $img_ext;
+                $image_folder .= $image_name;
+                if (move_uploaded_file($image_tmp_name, $image_folder)) {
+                    $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name,price, image) VALUES('$name','$price','$image_name' ) ") or die('query failed');
+                    if ($add_product_query) {
+                        $message[] = 'Product added! Perfect.';
+                    } else {
+                        $message[] = 'error while adding product';
+                    }
+                } else {
+                    $message[] = 'error while uploading image';
+                }
             }
         }
     }
@@ -50,32 +62,53 @@ if (isset($_GET['delete'])) {
 }
 if (isset($_POST['update_product'])) {
 
-    $update_p_id = $_POST['update_p_id'];
-    $update_name = $_POST['update_name'];
-    $update_price = $_POST['update_price'];
+    $update_p_id = isset($_POST['update_p_id']) ? trim($_POST['update_p_id']) : '';
+    $update_name = isset($_POST['update_name']) ? trim($_POST['update_name']) : '';
+    $update_price = isset($_POST['update_price']) ? trim($_POST['update_price']) : '';
+    $message = [];
 
-    mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price' WHERE id = '$update_p_id'") or die('query failed');
-
-    $update_image = $_FILES['update_image']['name'];
-    $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
-    $update_image_size = $_FILES['update_image']['size'];
-    $update_folder = 'img_uploaded/' . $update_image;
-    $update_old_image = $_POST['update_old_image'];
-
-    if (!empty($update_image)) {
-        if ($update_image_size > 20000000) {
-            $message[] = 'image file size is too large';
-        } else {
-            mysqli_query($conn, "UPDATE `products` SET image = '$update_image' WHERE id = '$update_p_id'") or die('query failed');
-            move_uploaded_file($update_image_tmp_name, $update_folder);
-            unlink('img_uploaded/' . $update_old_image);
+    if (empty($update_p_id)) {
+        $message[] = 'Product ID field is required.';
+    } else {
+        // Validate the product ID if it exists in the database
+        $validate_product_query = mysqli_query($conn, "SELECT * FROM products WHERE id = '$update_p_id'") or die('query failed');
+        if (mysqli_num_rows($validate_product_query) == 0) {
+            $message[] = 'Invalid Product ID';
         }
     }
 
-    header('location:admin_products.php');
-}
+    if (empty($update_name)) {
+        $message[] = 'Product name field is required.';
+    } elseif (preg_match('/^\s*$/', $update_name)) {
+        $message[] = 'Product name cannot be only whitespace.';
+    }
 
+    if (empty($update_price)) {
+        $message[] = 'Product price field is required.';
+    } elseif (!is_numeric($update_price)) {
+        $message[] = 'Product price should be a number.';
+    }
+
+    if (count($message) == 0) {
+        // Check if the new name already exists in the database
+        $check_product_name_query = mysqli_query($conn, "SELECT * FROM products WHERE name = '$update_name' AND id != '$update_p_id'") or die('query failed');
+        if (mysqli_num_rows($check_product_name_query) > 0) {
+            $message[] = 'Product name already exists.';
+        } else {
+            // If the validation passes, update the product in the database
+            $update_product_query = mysqli_query($conn, "UPDATE products SET name = '$update_name', price = '$update_price' WHERE id = '$update_p_id'") or die('query failed');
+            if ($update_product_query) {
+                $message[] = 'Product updated successfully!';
+            } else {
+                $message[] = 'Error updating product';
+            }
+        }
+    }
+}
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
