@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include 'config.php';
 
 if (!isset($_SESSION['admin_id'])) {
@@ -21,33 +22,31 @@ if (isset($_POST['add_product'])) {
     if (empty($image)) {
         $message[] = 'Image field is required.';
     }
-    if (empty($message)) {
-        $image_size = $image['size'];
-        $image_tmp_name = $image['tmp_name'];
-        $image_folder = 'img_uploaded/';
-        $allowed_ext = array('jpg', 'jpeg', 'png');
-        $img_ext = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
-        if (!in_array($img_ext, $allowed_ext)) {
-            $message[] = 'Invalid image file type';
-        } elseif ($image_size > 20000000) {
-            $message[] = 'image size is too big';
+    $image_size = $image['size'];
+    $image_tmp_name = $image['tmp_name'];
+    $image_folder = 'img_uploaded/';
+    $allowed_ext = array('jpg', 'jpeg', 'png');
+    $img_ext = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
+    if (!in_array($img_ext, $allowed_ext)) {
+        $message[] = 'Invalid image file type';
+    } elseif ($image_size > 20000000) {
+        $message[] = 'image size is too big';
+    } else {
+        $select_product_name = mysqli_query($conn, "SELECT * FROM `products` WHERE name ='$name'") or die('query failed');
+        if (mysqli_num_rows($select_product_name) > 0) {
+            $message[] = 'Product already added';
         } else {
-            $select_product_name = mysqli_query($conn, "SELECT * FROM `products` WHERE name ='$name'") or die('query failed');
-            if (mysqli_num_rows($select_product_name) > 0) {
-                $message[] = 'Product already added';
-            } else {
-                $image_name = md5(time() . rand()) . '.' . $img_ext;
-                $image_folder .= $image_name;
-                if (move_uploaded_file($image_tmp_name, $image_folder)) {
-                    $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name,price, image) VALUES('$name','$price','$image_name' ) ") or die('query failed');
-                    if ($add_product_query) {
-                        $message[] = 'Product added! Perfect.';
-                    } else {
-                        $message[] = 'error while adding product';
-                    }
+            $image_name = md5(time() . rand()) . '.' . $img_ext;
+            $image_folder .= $image_name;
+            if (move_uploaded_file($image_tmp_name, $image_folder)) {
+                $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name,price, image) VALUES('$name','$price','$image_name' ) ") or die('query failed');
+                if ($add_product_query) {
+                    $message[] = 'Product added! Perfect.';
                 } else {
-                    $message[] = 'error while uploading image';
+                    $message[] = 'error while adding product';
                 }
+            } else {
+                $message[] = 'error while uploading image';
             }
         }
     }
@@ -146,12 +145,13 @@ if (isset($_POST['update_product'])) {
 
 
     </secttion>
+
     <br>
     <br>
     <br>
     <br>
-    <br>
-    <br>
+
+
     <!-- product crud section ends -->
 
     <!-- show products -->
@@ -210,7 +210,6 @@ if (isset($_POST['update_product'])) {
             echo '<script>document.querySelector(".edit-product-form").style.display = "none";</script>';
         }
         ?>
-
 
 
     </section>
