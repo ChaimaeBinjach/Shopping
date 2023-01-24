@@ -453,6 +453,18 @@
   color:var(--purple);
   text-decoration: underline;
 }
+/* .footer .shiny{
+  text-align: center;
+  font-size: 2rem;
+  color:var(--light-color);
+  border-top: var(--border);
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+}
+
+.footer .shiny span{
+  color:var(--purple);
+} */
 .placed-orders .box-container{
   max-width: 1200px;
   margin:0 auto;

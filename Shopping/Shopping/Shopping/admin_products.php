@@ -149,6 +149,10 @@ if (isset($_POST['update_product'])) {
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
     <!-- product crud section ends -->

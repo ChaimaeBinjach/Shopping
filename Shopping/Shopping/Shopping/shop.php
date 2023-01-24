@@ -54,10 +54,18 @@ if (isset($_POST['add_to_cart'])) {
         <h3><span>Shiny</span>shop</h3>
 
     </div>
+    <br>
+    <br>
+    <!-- <br>
+    <br> -->
 
     <section class="products">
 
         <h1 class="title">Featured products</h1>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <div class="box-container">
 

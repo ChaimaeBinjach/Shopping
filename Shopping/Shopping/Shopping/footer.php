@@ -9,7 +9,7 @@
         <div class="box">
             <a href="https://www.linkedin.com/in/chaimae-binjach-89a9b3253/"> <i class="fab fa-linkedin"></i> linkedin </a>
         </div>
-
+        <!-- <p class="shiny"> &copy; copyright @ by <span>Chaimae Binjach 'Shiny'</span> </p> -->
 
 
 </section>

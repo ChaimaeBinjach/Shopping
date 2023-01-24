@@ -10,6 +10,8 @@ if (!isset($user_id)) {
     header('location:login.php');
 };
 
+
+
 if (isset($_POST['add_to_cart'])) {
 
     $product_name = $_POST['product_name'];
